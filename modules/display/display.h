@@ -1,10 +1,10 @@
 //=====[#include guards - begin]===============================================
-
+#include <stdint.h>
 #ifndef _DISPLAY_H_
 #define _DISPLAY_H_
 
 //=====[Declaration of public defines]=========================================
-
+#define SYSTEM_TIME_INCREMENT_MS   10
 //=====[Declaration of public data types]======================================
 
 typedef enum {

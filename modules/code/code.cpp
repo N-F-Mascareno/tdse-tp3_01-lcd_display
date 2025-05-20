@@ -6,11 +6,6 @@
 #include "code.h"
 
 #include "user_interface.h"
-#include "pc_serial_com.h"
-#include "date_and_time.h"
-#include "temperature_sensor.h"
-#include "gas_sensor.h"
-#include "matrix_keypad.h"
 
 //=====[Declaration of private defines]========================================
 
@@ -62,18 +57,7 @@ bool codeMatchFrom( codeOrigin_t codeOrigin )
 
         break;
         case CODE_PC_SERIAL:
-            if( pcSerialComCodeCompleteRead() ) {
-                codeIsCorrect = codeMatch(codeSequenceFromPcSerialCom);
-                pcSerialComCodeCompleteWrite(false);
-                if ( codeIsCorrect ) {
-                    codeDeactivate();
-                    pcSerialComStringWrite( "\r\nThe code is correct\r\n\r\n" );
-                } else {
-                    incorrectCodeStateWrite(ON);
-                    numberOfIncorrectCodes++;
-                    pcSerialComStringWrite( "\r\nThe code is incorrect\r\n\r\n" );
-                }
-            }
+            
 
         break;
         default:

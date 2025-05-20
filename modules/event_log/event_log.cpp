@@ -1,15 +1,14 @@
 //=====[Libraries]=============================================================
+#include <string.h>
 
 #include "mbed.h"
 #include "arm_book_lib.h"
 
 #include "event_log.h"
 
-#include "siren.h"
-#include "fire_alarm.h"
 #include "user_interface.h"
-#include "date_and_time.h"
-#include "pc_serial_com.h"
+
+
 
 //=====[Declaration of private defines]========================================
 
@@ -46,19 +45,7 @@ static void eventLogElementStateUpdate( bool lastState,
 
 void eventLogUpdate()
 {
-    bool currentState = sirenStateRead();
-    eventLogElementStateUpdate( sirenLastState, currentState, "ALARM" );
-    sirenLastState = currentState;
-
-    currentState = gasDetectorStateRead();
-    eventLogElementStateUpdate( gasLastState, currentState, "GAS_DET" );
-    gasLastState = currentState;
-
-    currentState = overTemperatureDetectorStateRead();
-    eventLogElementStateUpdate( tempLastState, currentState, "OVER_TEMP" );
-    tempLastState = currentState;
-
-    currentState = incorrectCodeStateRead();
+    bool currentState = incorrectCodeStateRead();
     eventLogElementStateUpdate( ICLastState, currentState, "LED_IC" );
     ICLastState = currentState;
 
@@ -99,10 +86,7 @@ void eventLogWrite( bool currentState, const char* elementName )
         eventsIndex++;
     } else {
         eventsIndex = 0;
-    }
-
-    pcSerialComStringWrite(eventAndStateStr);
-    pcSerialComStringWrite("\r\n");
+    }    
 }
 
 //=====[Implementations of private functions]==================================
