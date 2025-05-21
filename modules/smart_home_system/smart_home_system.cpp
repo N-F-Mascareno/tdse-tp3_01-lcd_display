@@ -1,13 +1,9 @@
 //=====[Libraries]=============================================================
 
 #include "arm_book_lib.h"
-
 #include "smart_home_system.h"
-
-
 #include "user_interface.h"
 
-#include "event_log.h"
 
 //=====[Declaration of private defines]========================================
 
@@ -33,7 +29,6 @@ void smartHomeSystemInit()
 void smartHomeSystemUpdate()
 {
     userInterfaceUpdate();
-    eventLogUpdate();
     delay(SYSTEM_TIME_INCREMENT_MS);
 }
 

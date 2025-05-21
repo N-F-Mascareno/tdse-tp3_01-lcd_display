@@ -1,4 +1,5 @@
 //=====[Libraries]=============================================================
+#include <cstring>
 
 #include "mbed.h"
 #include "arm_book_lib.h"
@@ -57,11 +58,10 @@
 //=====[Declaration of private data types]=====================================
 
 //=====[Declaration and initialization of public global objects]===============
-
-DigitalOut displayD0( D0 );
-DigitalOut displayD1( D1 );
-DigitalOut displayD2( D2 );
-DigitalOut displayD3( D3 );
+//DigitalOut displayD0( D0 );
+//DigitalOut displayD1( D1 );
+//DigitalOut displayD2( D2 );
+//DigitalOut displayD3( D3 );
 DigitalOut displayD4( D4 );
 DigitalOut displayD5( D5 );
 DigitalOut displayD6( D6 );
@@ -223,10 +223,10 @@ static void displayPinWrite( uint8_t pinName, int value )
     switch( display.connection ) {
         case DISPLAY_CONNECTION_GPIO_8BITS:
             switch( pinName ) {
-                case DISPLAY_PIN_D0: displayD0 = value;   break;
-                case DISPLAY_PIN_D1: displayD1 = value;   break;
-                case DISPLAY_PIN_D2: displayD2 = value;   break;
-                case DISPLAY_PIN_D3: displayD3 = value;   break;
+                //case DISPLAY_PIN_D0: displayD0 = value;   break;
+                //case DISPLAY_PIN_D1: displayD1 = value;   break;
+                //case DISPLAY_PIN_D2: displayD2 = value;   break;
+                //case DISPLAY_PIN_D3: displayD3 = value;   break;
                 case DISPLAY_PIN_D4: displayD4 = value;   break;
                 case DISPLAY_PIN_D5: displayD5 = value;   break;
                 case DISPLAY_PIN_D6: displayD6 = value;   break;
@@ -237,6 +237,7 @@ static void displayPinWrite( uint8_t pinName, int value )
                 default: break;
             }
             break;
+            
         case DISPLAY_CONNECTION_GPIO_4BITS:
             switch( pinName ) {
                 case DISPLAY_PIN_D4: displayD4 = value;   break;
@@ -261,10 +262,10 @@ static void displayDataBusWrite( uint8_t dataBus )
     displayPinWrite( DISPLAY_PIN_D4, dataBus & 0b00010000 );
     switch( display.connection ) {
         case DISPLAY_CONNECTION_GPIO_8BITS:
-            displayPinWrite( DISPLAY_PIN_D3, dataBus & 0b00001000 );
-            displayPinWrite( DISPLAY_PIN_D2, dataBus & 0b00000100 );  
-            displayPinWrite( DISPLAY_PIN_D1, dataBus & 0b00000010 );      
-            displayPinWrite( DISPLAY_PIN_D0, dataBus & 0b00000001 );
+            //displayPinWrite( DISPLAY_PIN_D3, dataBus & 0b00001000 );
+            //displayPinWrite( DISPLAY_PIN_D2, dataBus & 0b00000100 );  
+            //displayPinWrite( DISPLAY_PIN_D1, dataBus & 0b00000010 );      
+            //displayPinWrite( DISPLAY_PIN_D0, dataBus & 0b00000001 );
         break; 
               
         case DISPLAY_CONNECTION_GPIO_4BITS:
