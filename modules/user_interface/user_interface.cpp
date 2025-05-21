@@ -6,6 +6,7 @@
 #include "user_interface.h"
 
 #include "code.h"
+#include "smart_home_system.h"
 #include "display.h"
 
 //=====[Declaration of private defines]========================================
